@@ -4,20 +4,20 @@ class ProductManager{
         this.products = [];
     }
 
-    addProduct(title, description, price, thumbnail= 'www.img.com', stock){
+    addProduct(title, description, price, thumbnail= 'www.img.com', code, stock){
         const newProduct = {
             id: this.#newId() + 1,
             title,
             description,
             price,
             thumbnail,
+            code,
             stock,
-        };
-        this.products.push(newProduct);
-
+        }
+        this.products.push(newProduct)
     }
-
-
+        
+        
     #newId(){
         let id = 0;
         this.products.map((product) => {
@@ -45,9 +45,9 @@ const productManager = new ProductManager()
 
 
 //Añadimos los productos a nuestro array 'Products'
-productManager.addProduct('Nike t-shirt', 'Remera nike deportiva', 350, this.thumbnail, 5); 
-productManager.addProduct('Nike short', 'Short deportivo Nike', 150, this.thumbnail, 8);
-productManager.addProduct('Nike shoes', 'Tu calzado para correr favorito', 600, this.thumbnail, 3); 
+productManager.addProduct('Nike t-shirt', 'Remera nike deportiva', 350, this.thumbnail, '#A001', 5);
+productManager.addProduct('Nike short', 'Short deportivo Nike', 150, this.thumbnail, '#A002', 8);
+productManager.addProduct('Nike shoes', 'Tu calzado para correr favorito', 600, this.thumbnail, '#A003', 3); 
 
 
 //Imprimimos por consola nuestro array con los productos agregados,
