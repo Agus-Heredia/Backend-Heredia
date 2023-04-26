@@ -1,5 +1,14 @@
 [
     {
+        "id": 1,
+        "title": "Nike t-shirt",
+        "description": "Nueva musculosa Nike",
+        "price": 500,
+        "thumbnail": "www.imgExample.com",
+        "code": "#A001",
+        "stock": 8
+    },
+    {
         "id": 2,
         "title": "Nike short",
         "description": "Nuevo pantalón Nike",

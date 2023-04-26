@@ -138,14 +138,14 @@ const testManager = async () => {
   console.log("--- Segundo llamado al array ---", getNo3);
 
 
-  // Con esta función podemos eliminar un producto en específico por su ID
-  await productManager.deleteProduct(1);
-  const getNo4 = await productManager.getProducts();
-  console.log("--- Tercer llamado al array ---", getNo4);
+  ////////// Con esta función podemos eliminar un producto en específico por su ID //////////
+  // await productManager.deleteProduct(1);
+  // const getNo4 = await productManager.getProducts();
+  // // console.log("--- Tercer llamado al array ---", getNo4);
 
 
-  //Actualizamos las caracteristicas de un producto mediante su ID
-  await productManager.updateProduct(1, {
+  // Actualizamos las caracteristicas de un producto mediante su ID
+  await productManager.updateProduct(0, {
     price: this.price + 300,
     stock: this.stock + 15,
   });
