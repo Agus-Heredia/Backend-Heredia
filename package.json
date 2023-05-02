@@ -1,0 +1,24 @@
+{
+  "name": "curso-backend",
+  "version": "1.0.0",
+  "description": "Mi nombre es Agustín Heredia, acá es donde voy a estar subiendo mi progreso y realizando mis desafíos y pre-entregas correspondientes al proyecto final del curso de Backend de CoderHouse.",
+  "main": "App.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon src/App.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Agus-Heredia/Backend-Heredia.git"
+  },
+  "keywords": [],
+  "author": "Heredia Agustin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Agus-Heredia/Backend-Heredia/issues"
+  },
+  "homepage": "https://github.com/Agus-Heredia/Backend-Heredia#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

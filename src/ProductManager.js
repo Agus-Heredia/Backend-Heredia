@@ -1,10 +1,12 @@
 //Hacemos un require al manejador de archivos nativo de NodeJs nombrado 'File System' 
-const fs = require('fs');
+// const fs = require('fs');
+import fs from 'fs';
+import { products } from '../data/db.js';
 
 //Creamos la clase que se encargara de manejar los productos que vayamos agregando, junto con sus archivos
-class ProductManager {
+ export class ProductManager {
   constructor() {
-    this.path = "./products.json";
+    this.path = '../data/db.js';
   }
 
   async getProducts() {
@@ -127,28 +129,31 @@ const testManager = async () => {
   await productManager.addProduct("Nike short","Nuevo pantalón Nike", 200 ,"www.imgExample.com","#A002", 3);
   await productManager.addProduct("Nike shoes","Nuevas zapatillas NikeAir", 700 ,"www.imgExample.com","#A003", 5);
   await productManager.addProduct("Nike hoodie","Nuevo buzo Nike", 600 ,"www.imgExample.com","#A004", 9);
+  await productManager.addProduct("Nike socks","Medias altas deportivas Nike", 100 ,"www.imgExample.com","#A005", 12);
 
 
-  // Buscamos producto por su ID
-  const getNo2 = await productManager.getProductById(1);
-  console.log("Producto buscado por ID:", getNo2);
 
-  // Llamamos al array para visualizar los productos
-  const getNo3 = await productManager.getProducts();
-  console.log("--- Segundo llamado al array ---", getNo3);
+  // // Buscamos producto por su ID
+  // const getNo2 = await productManager.getProductById(1);
+  // console.log("Producto buscado por ID:", getNo2);
+
+  // // Llamamos al array para visualizar los productos
+  // const getNo3 = await productManager.getProducts();
+  // console.log("--- Segundo llamado al array ---", getNo3);
 
 
-  ////////// Con esta función podemos eliminar un producto en específico por su ID //////////
-  // await productManager.deleteProduct(1);
+  // //////// Con esta función podemos eliminar un producto en específico por su ID //////////
+  // await productManager.deleteProduct();
   // const getNo4 = await productManager.getProducts();
-  // // console.log("--- Tercer llamado al array ---", getNo4);
+  // console.log("--- Tercer llamado al array ---", getNo4);
 
 
   // Actualizamos las caracteristicas de un producto mediante su ID
-  await productManager.updateProduct(0, {
-    price: this.price + 300,
-    stock: this.stock + 15,
-  });
+  // await productManager.updateProduct(0, {
+  //   price: + 300,
+  //   stock: + 15,
+  // })
+
 
   // Llamado al array final
   const getNo5 = await productManager.getProducts();
@@ -156,4 +161,4 @@ const testManager = async () => {
 
 };
 
-testManager();
+// testManager();
