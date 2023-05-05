@@ -1,5 +1,6 @@
 import express, { urlencoded } from "express";
 import productsRouter from './routes/productsRouter.js'
+import cartsRouter from './routes//cartsRouter.js'
 import { __dirname } from "./path.js";
 
 const app = express();
@@ -9,6 +10,7 @@ app.use(urlencoded({extended: true}))
 
 // app.use('/', productsRouter)
 app.use('/api/products', productsRouter)
+app.use('/api/carts', cartsRouter)
 app.use(express.static(__dirname + './public/images'))
 
 
