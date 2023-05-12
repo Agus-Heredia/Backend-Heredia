@@ -61,6 +61,55 @@ export default class cartManager {
     }
 
 
+    async addProductToCart(pid, cid) {
+        try {
+            const cart = await this.getCartById(cid);
+            if (cart) {
+                const productIndex = cart.products.findIndex(prod => prod.product === pid);
+                if (productIndex !== -1) {
+                    cart.products[productIndex].quantity += 1;
+                } else {
+                    cart.products.push(
+                        { 
+                        id: product.pid,
+                        quantity: 1
+                    });
+                }
+                const cartsFile = await this.getCarts();
+                const index = cartsFile.findIndex(crt => crt.cid === cid);
+                cartsFile[index] = cart;
+                await fs.promises.writeFile(this.pathCart, JSON.stringify(cartsFile));
+                return cart;
+            }
+            throw new Error(`Cart with id ${cid} not found`);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    async deleteCartById(cid) {
+        try {
+            const cartsFile = await this.getCarts();
+            if (cartsFile.length > 0) {
+                const newArray = cartsFile.filter(c => c.cid !== cid);
+                await fs.promises.writeFile(this.pathCart, JSON.stringify(newArray));
+            } else {
+                throw new Error(`Cart with id: ${cid} not found`);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    async deleteAllProducts() {
+        try {
+            if(fs.existsSync(this.path)) {
+               fs.promises.unlink(this.path)
+            }
+        } catch(error) {
+            console.log(error);  
+          }
+        }
 
 
 

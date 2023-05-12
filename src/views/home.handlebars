@@ -1,0 +1,14 @@
+{{>nav}}
+{{#if products.length}}
+  {{#each products }}
+  <div style="border: 1px solid blue">
+    <ul>
+      <h1>{{this.title}}</h1>
+      <h2>Precio: ${{price}}</h2>
+      <h3>Descripción: {{this.description}}</h3>
+    </ul>
+  </div>
+  {{/each}}
+{{else}}
+  <h1>Lo sentimos! Aún no hay productos para mostrar...</h1>
+{{/if}}
