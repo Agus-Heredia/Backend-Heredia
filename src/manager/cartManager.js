@@ -4,7 +4,7 @@ const path = '../../cart.json'
 
 export default class cartManager {
     constructor() {
-      this.path = path;
+        this.path = path;
     }
 
 
@@ -110,8 +110,6 @@ export default class cartManager {
             console.log(error);  
           }
         }
-
-
 
 
 
