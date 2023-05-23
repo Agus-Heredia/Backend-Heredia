@@ -1,6 +1,7 @@
 //Hacemos un import al manejador de archivos nativo de NodeJs nombrado 'File System' 
 import fs from 'fs';
-const path = '../../products.json'
+import { __dirname } from '../path.js';
+const path = __dirname + '../../products.json'
 
 //Creamos la clase que se encargara de manejar los productos que vayamos agregando, junto con sus archivos
  export default class ProductManager {

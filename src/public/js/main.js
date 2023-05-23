@@ -7,7 +7,7 @@ socketClient.on('msgFromBack', (msg) => {
 const form = document.getElementById('form');
 const inputName = document.getElementById('inputName');
 const inputPrice = document.getElementById('inputPrice');
-const products = document.getElementById('products');
+// const products = document.getElementById('products');
 
 
 form.onsubmit = (e) => {
@@ -19,9 +19,11 @@ form.onsubmit = (e) => {
 
 socketClient.on('getProducts', (array) => {
     let infoProducts = '';
-    array.forEach( p => {
-        infoProducts += `${p.name} - ${p.price} <br>`;
+
+    array.forEach( (p) => {
+        infoProducts += `${p.title} - ${p.price} <br>`;
     });
-    console.log(infoProducts);
+    // console.log(infoProducts);
+    const products = document.getElementById('formProducts');
     products.innerHTML = infoProducts;
 })

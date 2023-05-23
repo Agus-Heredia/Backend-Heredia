@@ -5,9 +5,11 @@
   {{#each products }}
   <div style="width: 600px; display: inline-block">
     <ul style="border: 1px solid #000">
-      <h1 style="font-style: italic;">- {{this.title}} -</h1>
+      <h1 style="font-style: italic;">- {{title}} -</h1>
       <p><b>Precio:</b> usd ${{price}}</p>
-      <p><b>Descripción:</b> {{this.description}}</p> <br>
+      <p><b>Descripción:</b> {{description}}</p>
+      <p><b>Categoría:</b> {{category}}</p>
+      <p><b>Stock:</b> {{stock}}</p>
     </ul>
   </div>
   {{/each}}

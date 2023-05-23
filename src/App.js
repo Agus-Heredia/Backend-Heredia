@@ -22,20 +22,25 @@ app.use('/', viewsRouter)
 // app.use('/', productsRouter)
 app.use('/api/products', productsRouter)
 app.use('/api/carts', cartsRouter)
-app.use(express.static(__dirname + './public/images'))
+app.use(express.static(__dirname + '/public'))
+
+// // Configurar la ruta estática para los archivos JavaScript
+// app.use('/realtimeproducts', express.static(__dirname + '../public/main.js'));
+
+// // Configurar el tipo MIME para los archivos JavaScript
+// app.use('/realtimeproducts', (req, res, next) => {
+//   res.type('text/javascript');
+//   next();
+// });
 
 
-// APP.LISTEN
-const PORT = 8080;
-// app.listen(PORT, () => {
-//     console.log(`🚀 Server running on port ${PORT}!`);
-// })
-
-
-//Websocket
+    
+    
+//Websocket    
 import ProductManager from '../src/manager/ProductManager.js'
 const productManager = new ProductManager()
 
+const PORT = 8080;
 const httpServer = app.listen(PORT, () => {
     console.log(`🚀 Server running on port ${PORT}!`);
 })
@@ -43,16 +48,31 @@ const httpServer = app.listen(PORT, () => {
 const socketServer = new Server(httpServer)
 
 
-socketServer.on('connection', (socket) => {
-    console.log('User connected successfully', socket.id);
+// socketServer.on('connection', (socket) => {
+//     console.log('User connected successfully', socket.id);
+//     socket.on('disconnect', () => {
+//         console.log('User disconnected');
+//     })
+//     // socket.emit('msgFromBack', 'Welcome to the Backend server!');
+
+//     socket.on('newProduct', async(prod) => {
+//         await productManager.createProduct(prod.name, prod.price)
+//         const products = await productManager.getProducts()
+//         socketServer.emit ('getProducts', products)
+//     })
+// })
+
+socketServer.on('connection', async (socket) => {
+    console.log('✓ User connected successfully!', `-- Your ID is: (${socket.id}) --`);
     socket.on('disconnect', () => {
-        console.log('User disconnected');
+        console.log('✗ User disconnected');
     })
     // socket.emit('msgFromBack', 'Welcome to the Backend server!');
 
+    const products = await productManager.getProducts()
+    // console.log(products)
     socket.on('newProduct', async(prod) => {
-        await productManager.createProduct(prod.name, prod.price)
-        const products = await productManager.getProducts()
-        socketServer.emit ('getProducts', products)
+        await productManager.createProduct(prod.name, {...prod})
     })
+    socket.emit('getProducts', products)
 })
